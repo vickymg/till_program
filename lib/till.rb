@@ -1,9 +1,14 @@
 class Till
 
-  attr_reader :order
+  require 'json'
 
-  def initialize
+  attr_reader :order, :menu
+
+  MENU = File.read('coffeeshop.json')
+
+  def initialize(menu = MENU)
     @order = {}
+    @menu = JSON.parse(menu)
   end
 
 end

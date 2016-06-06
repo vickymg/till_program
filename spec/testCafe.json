@@ -1,0 +1,14 @@
+[
+  {
+    "shopName": "Test Cafe",
+    "address": "546 Test Street",
+    "phone": "123456789",
+    "prices": [
+      {
+        "Cafe Latte": 3.50,
+        "Flat White": 2.50,
+        "Cappucino": 2.75
+      }
+    ]
+  }
+]
