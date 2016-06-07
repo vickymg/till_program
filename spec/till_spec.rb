@@ -13,4 +13,12 @@ describe Till do
     expect(till.menu).to eq(JSON.parse(test_menu))
   end
 
+  describe '#place_order' do
+
+    it 'has a place order method that can be passed items' do
+      expect(till).to respond_to(:place_order).with(1).argument
+    end
+
+  end
+
 end

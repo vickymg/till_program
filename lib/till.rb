@@ -11,4 +11,8 @@ class Till
     @menu = JSON.parse(menu)
   end
 
+  def place_order(item)
+    
+  end
+
 end
