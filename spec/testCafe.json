@@ -1,5 +1,4 @@
-[
-  {
+{
     "shopName": "Test Cafe",
     "address": "546 Test Street",
     "phone": "123456789",
@@ -11,4 +10,3 @@
       }
     ]
   }
-]

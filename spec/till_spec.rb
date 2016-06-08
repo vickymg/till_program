@@ -19,6 +19,10 @@ describe Till do
       expect(till).to respond_to(:place_order).with(1).argument
     end
 
+    it 'returns the correct price when passed an item' do
+      expect(till.place_order('Cappucino')).to eq(2.75)
+    end
+
   end
 
 end

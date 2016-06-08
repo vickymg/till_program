@@ -12,7 +12,7 @@ class Till
   end
 
   def place_order(item)
-    
+    @menu["prices"][0][item]
   end
 
 end
