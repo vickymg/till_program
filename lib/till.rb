@@ -12,7 +12,10 @@ class Till
   end
 
   def place_order(item)
-    @order[item] = @menu["prices"][0][item]
+    item.split(", ").each do |item|
+      @order[item] = @menu["prices"][0][item]
+    end
+    @order
   end
 
   def print_receipt

@@ -19,8 +19,16 @@ describe Till do
       expect(till).to respond_to(:place_order).with(1).argument
     end
 
-    it 'returns the correct price when passed an item' do
-      expect(till.place_order('Cappuccino')).to eq(2.75)
+    it 'adds the item plus price to the order' do
+      till.place_order('Cappuccino')
+      expect(till.order).to eq({"Cappuccino" => 2.75})
+    end
+
+    it 'adds multiple items plus prices to the order' do
+      expect(till.place_order('Cappuccino, Flat White')).to eq({
+        "Cappuccino" => 2.75,
+        "Flat White" => 2.50
+        })
     end
 
   end
