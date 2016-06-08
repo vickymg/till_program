@@ -36,11 +36,12 @@ describe Till do
   describe '#print_receipt' do
 
     before do
-      till.place_order('Cappuccino')
+      till.place_order('Cappuccino, Flat White')
     end
 
     it 'returns the item ordered plus price to stdout' do
-      expect{till.print_receipt}.to output("Cappuccino: 2.75").to_stdout
+      text = "Cappuccino: 2.75\nFlat White: 2.50\n"
+      expect{till.print_receipt}.to output(text).to_stdout
     end
 
   end

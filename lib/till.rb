@@ -20,7 +20,7 @@ class Till
 
   def print_receipt
     @order.each do |item, price|
-      print "#{item}: #{price}"
+      print "#{item}: #{'%.2f' % price}\n"
     end
   end
 
