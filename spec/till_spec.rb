@@ -20,7 +20,19 @@ describe Till do
     end
 
     it 'returns the correct price when passed an item' do
-      expect(till.place_order('Cappucino')).to eq(2.75)
+      expect(till.place_order('Cappuccino')).to eq(2.75)
+    end
+
+  end
+
+  describe '#print_receipt' do
+
+    before do
+      till.place_order('Cappuccino')
+    end
+
+    it 'returns the item ordered plus price to stdout' do
+      expect{till.print_receipt}.to output("Cappuccino: 2.75").to_stdout
     end
 
   end

@@ -12,7 +12,13 @@ class Till
   end
 
   def place_order(item)
-    @menu["prices"][0][item]
+    @order[item] = @menu["prices"][0][item]
+  end
+
+  def print_receipt
+    @order.each do |item, price|
+      print "#{item}: #{price}"
+    end
   end
 
 end
