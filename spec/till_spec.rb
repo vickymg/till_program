@@ -6,7 +6,7 @@ describe Till do
   subject(:till) { described_class.new(menu = test_menu) }
 
   it 'initializes with an empty order' do
-    expect(till.order).to eq({})
+    expect(till.total_order).to eq([])
   end
 
   it 'should parse a json file containing coffee shop details and items' do
@@ -21,14 +21,14 @@ describe Till do
 
     it 'adds the item plus price to the order' do
       till.place_order('Cappuccino')
-      expect(till.order).to eq({"Cappuccino" => 2.75})
+      expect(till.total_order).to eq([{"Cappuccino" => 2.75}])
     end
 
     it 'adds multiple items plus prices to the order' do
-      expect(till.place_order('Cappuccino, Flat White')).to eq({
-        "Cappuccino" => 2.75,
-        "Flat White" => 2.50
-        })
+      expect(till.place_order('Cappuccino, Flat White')).to eq([{
+        "Cappuccino" => 2.75},
+        {"Flat White" => 2.50
+        }])
     end
 
   end
@@ -39,8 +39,8 @@ describe Till do
       till.place_order('Cappuccino, Flat White')
     end
 
-    it 'returns the item ordered plus price to stdout' do
-      text = "Cappuccino: 2.75\nFlat White: 2.50\n"
+    it 'returns the item ordered plus, quantity and price to stdout' do
+      text = "Cappuccino: 1 x 2.75\nFlat White: 1 x 2.50\n"
       expect{till.print_receipt}.to output(text).to_stdout
     end
 

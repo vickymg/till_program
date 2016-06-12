@@ -2,26 +2,27 @@ class Till
 
   require 'json'
 
-  attr_reader :order, :menu
+  attr_reader :total_order, :menu
 
   MENU = File.read('coffeeshop.json')
 
   def initialize(menu = MENU)
-    @order = {}
+    @total_order = []
     @menu = JSON.parse(menu)
   end
 
   def place_order(item)
     item.split(", ").each do |item|
-      @order[item] = @menu["prices"][0][item]
+      @order = @menu["prices"][0].select { |k, v| item.include? k }
+      @total_order << @order
     end
-    @order
+    @total_order
   end
 
   def print_receipt
-    @order.each do |item, price|
-      print "#{item}: #{'%.2f' % price}\n"
-    end
+    @total_order.each {|item|
+      item.each {|choice, price| print "#{choice}: 1 x #{'%.2f' % price}\n"}
+    }
   end
 
 end
