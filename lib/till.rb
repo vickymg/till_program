@@ -1,15 +1,14 @@
 class Till
 
-  require 'json'
+  require_relative 'menu'
 
   attr_reader :total_order, :menu
 
-  MENU = File.read('coffeeshop.json')
   TAX_PERCENTAGE = 5
 
-  def initialize(menu = MENU)
+  def initialize(menu = Menu.new)
     @total_order = []
-    @menu = JSON.parse(menu)
+    @menu = menu.cafe
   end
 
   def place_order(item)
