@@ -11,7 +11,7 @@ class Menu
   end
 
   def prices
-    @prices = @cafe['prices']
+    @prices = @cafe['prices'][0]
   end
 
 end

@@ -9,14 +9,15 @@ describe Till do
 
   before do
     allow(menu).to receive(:cafe).and_return(parsed_menu)
+    allow(menu).to receive(:prices).and_return(parsed_menu['prices'][0])
   end
 
   it 'initializes with an empty order' do
     expect(till.total_order).to eq([])
   end
 
-  it 'initializes with a new menu' do
-    expect(till.menu).to eq(parsed_menu)
+  it 'initializes with a new menu to populate prices' do
+    expect(till.prices).to eq(parsed_menu['prices'][0])
   end
 
   describe '#place_order' do

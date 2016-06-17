@@ -2,18 +2,18 @@ class Till
 
   require_relative 'menu'
 
-  attr_reader :total_order, :menu
+  attr_reader :total_order, :prices
 
   TAX_PERCENTAGE = 5
 
   def initialize(menu = Menu.new)
     @total_order = []
-    @menu = menu.cafe
+    @prices = menu.prices
   end
 
   def place_order(item)
     item.split(", ").each do |item|
-      @order = @menu["prices"][0].select { |k, v| item.include? k }
+      @order = @prices.select { |k, v| item.include? k }
       @total_order << @order
     end
     @total_order

@@ -12,7 +12,7 @@ describe Menu do
 
   describe '#prices' do
     it 'should return the price list' do
-      expect(menu.prices).to eq(parsed_cafe['prices'])
+      expect(menu.prices).to eq(parsed_cafe['prices'][0])
     end
   end
 
