@@ -24,16 +24,16 @@ class Till
     @total_order.each do |item|
       item.each {|choice, price| puts "#{choice}: 1 x #{'%.2f' % price}\n"}
     end
-    puts "Tax: #{calculate_tax}"
-    puts "Total: #{@total + @tax}"
+    puts "Tax: #{'%.2f' % calculate_tax}"
+    puts "Total: #{'%.2f' % (@total + @tax)}"
   end
+
+  private
 
   def calculate_tax
     total_cost
     @tax = (@total*TAX_PERCENTAGE/100).round(2)
   end
-
-  private
 
   def total_cost
     @total = 0

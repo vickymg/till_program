@@ -44,13 +44,6 @@ describe Till do
         expect{till.print_receipt}.to output(text).to_stdout
       end
     end
-
-    describe '#calculate_tax' do
-      it 'calculates 5% tax on the cost of the total order' do
-        expect(till.calculate_tax).to eq(0.26)
-      end
-    end
-
   end
 
 end
