@@ -30,7 +30,6 @@ describe Till do
         {"Flat White" => 2.50
         }])
     end
-
   end
 
   describe '#print_receipt' do
@@ -43,7 +42,17 @@ describe Till do
       text = "Cappuccino: 1 x 2.75\nFlat White: 1 x 2.50\n"
       expect{till.print_receipt}.to output(text).to_stdout
     end
+  end
 
+  describe '#total_cost' do
+
+    before do
+      till.place_order('Cappuccino, Flat White')
+    end
+
+    it 'returns the total cost of items ordered' do
+      expect(till.total_cost).to eq(5.25)
+    end
   end
 
 end
