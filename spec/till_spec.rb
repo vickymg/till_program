@@ -32,27 +32,31 @@ describe Till do
     end
   end
 
-  describe '#print_receipt' do
+  context 'order has been placed' do
 
     before do
       till.place_order('Cappuccino, Flat White')
     end
 
-    it 'returns the item ordered plus, quantity and price to stdout' do
-      text = "Cappuccino: 1 x 2.75\nFlat White: 1 x 2.50\n"
-      expect{till.print_receipt}.to output(text).to_stdout
-    end
-  end
-
-  describe '#total_cost' do
-
-    before do
-      till.place_order('Cappuccino, Flat White')
+    describe '#print_receipt' do
+      it 'returns the item ordered plus, quantity and price to stdout' do
+        text = "Cappuccino: 1 x 2.75\nFlat White: 1 x 2.50\n"
+        expect{till.print_receipt}.to output(text).to_stdout
+      end
     end
 
-    it 'returns the total cost of items ordered' do
-      expect(till.total_cost).to eq(5.25)
+    # describe '#total_cost' do
+    #   it 'returns the total cost of items ordered' do
+    #     expect(till.total_cost).to eq(5.25)
+    #   end
+    # end
+
+    describe '#calculate_tax' do
+      it 'calculates 5% tax on the cost of the total order' do
+        expect(till.calculate_tax).to eq("0.26")
+      end
     end
+
   end
 
 end

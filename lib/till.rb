@@ -5,6 +5,7 @@ class Till
   attr_reader :total_order, :menu
 
   MENU = File.read('coffeeshop.json')
+  TAX_PERCENTAGE = 5
 
   def initialize(menu = MENU)
     @total_order = []
@@ -25,12 +26,16 @@ class Till
     end
   end
 
+  def calculate_tax
+    total_cost
+    tax = '%.2f' % (@total*TAX_PERCENTAGE/100)
+  end
+
+  private
+
   def total_cost
-    total = 0
-    @total_order.each do |item|
-      item.each {|choice, price| total += price }
-    end
-    total
+    @total = 0
+    @total_order.each { |item| item.each {|choice, price| @total += price } }
   end
 
 end
