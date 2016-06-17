@@ -10,4 +10,8 @@ class Menu
     @cafe = JSON.parse(cafe)
   end
 
+  def prices
+    @prices = @cafe['prices']
+  end
+
 end
