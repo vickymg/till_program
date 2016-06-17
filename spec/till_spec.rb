@@ -3,15 +3,20 @@ require 'till'
 describe Till do
 
   test_cafe = File.read('./spec/testCafe.json')
+  parsed_menu = JSON.parse(test_cafe)
   let(:menu) { double :menu }
   subject(:till) { described_class.new(menu) }
 
   before do
-    allow(menu).to receive(:cafe).and_return(JSON.parse(test_cafe))
+    allow(menu).to receive(:cafe).and_return(parsed_menu)
   end
 
   it 'initializes with an empty order' do
     expect(till.total_order).to eq([])
+  end
+
+  it 'initializes with a new menu' do
+    expect(till.menu).to eq(parsed_menu)
   end
 
   describe '#place_order' do
